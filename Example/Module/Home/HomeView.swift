@@ -1,0 +1,43 @@
+//
+//  HomeView.swift
+//  Example
+//
+//  Created by Quinn on 6/5/20.
+//Copyright © 2020 Quinn. All rights reserved.
+//
+
+import UIKit
+import Viperit
+import RSLoadingView
+
+////////////////////////////////////////////////////////////////////////////////
+/// MARK: - Public Interface Protocol
+////////////////////////////////////////////////////////////////////////////////
+protocol HomeViewInterface {
+	func showLoading()
+	func hideLoading()
+	func showError(message: String)
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//MARK: HomeView Class
+////////////////////////////////////////////////////////////////////////////////
+final class HomeView: UserInterface {
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//MARK: - Public interface
+////////////////////////////////////////////////////////////////////////////////
+extension HomeView: HomeViewInterface {
+	func showLoading() {
+        let loadingView = RSLoadingView()
+        loadingView.showOnKeyWindow()
+    }
+    func hideLoading() {
+        RSLoadingView.hideFromKeyWindow()
+    }
+	func showError(message: String) {
+        hideLoading()
+        self.showErrorAlert(message)
+	}
+}
